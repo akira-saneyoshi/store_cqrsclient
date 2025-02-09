@@ -1,0 +1,18 @@
+services:
+  cqrsclient:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: cqrsclient
+    hostname: cqrsclient
+    tty: true
+    volumes:
+      - .:/opt/cqrsclient
+    # command: sh -c "go mod tidy"
+    ports:
+      - 8081:8081
+    networks:
+      - external
+networks:
+  external:
+    name: storedb_net
